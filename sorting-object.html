@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <title>Sorting Object</title>
+    <style>
+        button{
+            width: 60px;
+            height: 60px;
+            margin: 5px 5px 0px 5px;
+            background-color:aliceblue;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        input{
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 32px;
+            color: grey;
+        }
+        button:hover{
+            background-color: khaki;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="col-7">
+            <h2 class="text-center mb-4">Sorting Data</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Rating</th>
+                        <th>Likes</th>
+                    </tr>
+                </thead>
+                <tbody id="product">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        var product = [
+            {name:"Indomie", price:3000, rating:5 ,likes:150 },
+            {name:"Laptop", price:4000000, rating:4.5 ,likes:123 },
+            {name:"Aqua", price:3000, rating:4 ,likes:250 },
+            {name:"Smart TV", price:4000000, rating:4.5 ,likes:42 },
+            {name:"Headphone", price:4000000, rating:3.5 ,likes:90 },
+            {name:"Very Smart TV", price:4000000, rating:3.5 ,likes:87 },
+            {name:"Smartphone", price:4000000, rating:3.5 ,likes:134 },
+        ]
+
+        function sorting(a,b){
+            if(a.price < b.price){
+                return -1;
+            }
+            if(a.rating < b.rating){
+                return 1;
+            }
+            if(a.likes > b.likes){
+                return -1;
+            }
+        }
+        product.sort(sorting)
+
+        document.getElementById('product').innerHTML = product.map(user => 
+            `<tr>
+            <td>${user.name}</td>
+            <td>${user.price}</td>
+            <td>${user.rating}</td>
+            <td>${user.likes}</td>
+            </tr>`
+        ).join('')
+    </script>
+</body>
+</html>
